@@ -1,32 +1,37 @@
 Rails.application.routes.draw do
-  namespace :admin do
-    get 'users/index'
-    get 'users/show'
-    get 'users/edit'
+  namespace :public do
+    resources :homes, only: [:top, :about]
+    resources :registrations, only: [:new, :create]
+    resources :sessions, only: [:new, :create, :destroy]
+    resources :users, only: [:show, :edit, :update] do
+      member do
+        get :confirm
+        patch :withdrawal
+      end
+    end
+    resources :posts do
+      resources :post_comments, only: [:new, :create, :index, :show]
+    end
+    resources :favorites, only: [:show, :create, :destroy]
+    resources :groups
+    resources :genres
+    resources :follows, only: [:index, :create, :destroy] do
+      member do
+        get :followers
+        get :followings
+        delete :unfollow
+      end
+    end
+    resources :events do
+      collection do
+        get :events
+      end
+    end
   end
-  get 'events/index'
-  get 'events/events'
-  get 'events/show'
-  get 'events/edit'
-  get 'follows/index'
-  get 'follows/followers'
-  get 'follows/following'
-  get 'genres/index'
-  get 'genres/edit'
-  get 'groups/new'
-  get 'groups/show'
-  get 'groups/edit'
-  get 'favorites/show'
-  get 'post_comments/new'
-  get 'post_comments/index'
-  get 'post_comments/show'
-  get 'posts/index'
-  get 'posts/new'
-  get 'users/show'
-  get 'users/edit'
-  get 'sessions/new'
-  get 'registrations/new'
-  get 'homes/top'
-  get 'homes/about'
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
+  namespace :admin do
+    resources :users, only: [:index, :show, :edit, :update]
+    resources :comments, only: [:destroy]
+    resources :posts, only: [:destroy]
+  end
 end
