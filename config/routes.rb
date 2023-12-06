@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'events/index'
+  get 'events/events'
+  get 'events/show'
+  get 'events/edit'
   get 'follows/index'
   get 'follows/followers'
   get 'follows/following'
