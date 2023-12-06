@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'sessions/new'
   get 'registrations/new'
   get 'homes/top'
   get 'homes/about'
