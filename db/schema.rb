@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_12_06_135151) do
+ActiveRecord::Schema.define(version: 2023_12_06_135343) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -41,8 +41,8 @@ ActiveRecord::Schema.define(version: 2023_12_06_135151) do
   end
 
   create_table "favorites", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "post_id"
+    t.integer "user_id", null: false
+    t.integer "post_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["post_id"], name: "index_favorites_on_post_id"
@@ -50,16 +50,29 @@ ActiveRecord::Schema.define(version: 2023_12_06_135151) do
   end
 
   create_table "genres", force: :cascade do |t|
-    t.string "level_name"
-    t.string "area_name"
+    t.string "level_name", null: false
+    t.string "area_name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "groups", force: :cascade do |t|
+    t.integer "genre_id", null: false
+    t.string "owner_last_name", null: false
+    t.string "owner_first_name", null: false
+    t.string "owner_last_name_kana", null: false
+    t.string "owner_first_name_kana", null: false
+    t.string "group_name", null: false
+    t.string "description", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["genre_id"], name: "index_groups_on_genre_id"
+  end
+
   create_table "post_comments", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "post_id"
-    t.text "post_comment"
+    t.integer "user_id", null: false
+    t.integer "post_id", null: false
+    t.text "post_comment", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["post_id"], name: "index_post_comments_on_post_id"
