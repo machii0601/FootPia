@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'follows/index'
+  get 'follows/followers'
+  get 'follows/following'
   get 'genres/index'
   get 'genres/edit'
   get 'groups/new'
