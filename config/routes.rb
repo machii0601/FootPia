@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'favorites/show'
   get 'post_comments/new'
   get 'post_comments/index'
   get 'post_comments/show'
