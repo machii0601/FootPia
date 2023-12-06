@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'groups/new'
+  get 'groups/show'
+  get 'groups/edit'
   get 'favorites/show'
   get 'post_comments/new'
   get 'post_comments/index'
