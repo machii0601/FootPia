@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   namespace :public do
-    resources :homes, only: [:top, :about]
+    root to: 'homes#top'
+    resources :homes, only: [ :about]
     resources :registrations, only: [:new, :create]
     resources :sessions, only: [:new, :create, :destroy]
     resources :users, only: [:show, :edit, :update] do
@@ -30,6 +31,7 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
+    root to: 'users#index'
     resources :users, only: [:index, :show, :edit, :update]
     resources :comments, only: [:destroy]
     resources :posts, only: [:destroy]
