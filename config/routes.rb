@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'genres/index'
+  get 'genres/edit'
   get 'groups/new'
   get 'groups/show'
   get 'groups/edit'
