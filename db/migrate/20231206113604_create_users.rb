@@ -5,9 +5,9 @@ class CreateUsers < ActiveRecord::Migration[6.1]
       t.string :last_name
       t.string :first_name_kana
       t.string :last_name_kana
-      t.string :password
+      t.string :password, null: false
       t.string :profile_image
-      t.string :email
+      t.string :email, null: false
       t.string :soccer_futsal_experience
       t.string :position
       t.text :bio
