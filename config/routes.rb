@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :admins
   namespace :public do
     root to: 'homes#top'
     resources :homes, only: [ :about]
